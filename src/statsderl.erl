@@ -119,7 +119,7 @@ get_base_key(undefined) ->
     <<"">>.
 
 format_sample_rate(SampleRate) ->
-    [<<"|@">>, io_lib:format("~.3f", [SampleRate])].
+    [<<"|@">>, statsderl_mochinum:digits(SampleRate)].
 
 generate_packet(decrement, Key, Value, SampleRate) when SampleRate >= 1 ->
     [Key, <<":-">>, Value, <<"|c">>];
@@ -175,6 +175,6 @@ send(Method, Key, Value, SampleRate) when is_integer(Value) ->
     Packet = generate_packet(Method, Key, BinValue, SampleRate),
     gen_server:cast(?MODULE, {send, Packet});
 send(Method, Key, Value, SampleRate) when is_float(Value) ->
-    BinValue = list_to_binary(io_lib:format("~.2f", [Value])),
+    BinValue = list_to_binary(statsderl_mochinum:digits(Value)),
     Packet = generate_packet(Method, Key, BinValue, SampleRate),
     gen_server:cast(?MODULE, {send, Packet}).
