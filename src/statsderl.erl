@@ -43,11 +43,11 @@ decrement(Key, Value, SampleRate) ->
 gauge(Key, Value, SampleRate) ->
     maybe_send(gauge, Key, Value, SampleRate).
 
-gauge_decr(Key, Value) ->
-    maybe_send(gauge_decr, Key, Value, 1).
+gauge_decr(Key, Value, SampleRate) ->
+    maybe_send(gauge_decr, Key, Value, SampleRate).
 
-gauge_incr(Key, Value) ->
-    maybe_send(gauge_incr, Key, Value, 1).
+gauge_incr(Key, Value, SampleRate) ->
+    maybe_send(gauge_incr, Key, Value, SampleRate).
 
 increment(Key, Value, SampleRate) ->
     maybe_send(increment, Key, Value, SampleRate).
