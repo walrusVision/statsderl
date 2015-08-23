@@ -4,8 +4,8 @@
 -export([
     decrement/3,
     gauge/3,
-    gauge_decr/2,
-    gauge_incr/2,
+    gauge_decr/3,
+    gauge_incr/3,
     increment/3,
     pool_size/0,
     server_name/1,
